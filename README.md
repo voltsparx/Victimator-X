@@ -1,5 +1,5 @@
 # Victimator-X 🔐  
-### Advanced Password Profiling & Wordlist Generator
+### Password Profiling & Wordlist Generator
 
 <p align="center">
   <b>Ethical Security Tool for Targeted Password Auditing</b><br>
