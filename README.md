@@ -3,7 +3,8 @@
 
 <p align="center">
   <b>Ethical Security Tool for Targeted Password Auditing</b><br>
-  Built for penetration testers, red teams, and security researchers.
+  Built for penetration testers, red teams, and security researchers.<br>
+  For Educational Purposes Only!
 </p>
 
 ---
