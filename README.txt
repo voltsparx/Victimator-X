@@ -1,177 +1,250 @@
----
-______________________________________________________________________
-|                            VICTIMATOR-X                            |
-|                   Advanced Password Profiling Tool                 |
-----------------------------------------------------------------------
+# Victimator-X 🔐  
+### Advanced Password Profiling & Wordlist Generator
 
-=== DESCRIPTION ===
-Victimator‑X is an advanced **password profiling & wordlist generation tool** designed for ethical penetration testing and security auditing.
-
-It generates targeted wordlists by combining:
-
-* Personal data (names, birthdates, phone numbers)
-* Professional info (company, job titles)
-* Digital footprints (websites, gaming usernames)
-* Multi‑value fields (hobbies, locations, favorite colors)
-* Smart transformations (leet, symbols, number patterns)
-
-Designed for **authorized security assessments ONLY**.
+<p align="center">
+  <b>Ethical Security Tool for Targeted Password Auditing</b><br>
+  Built for penetration testers, red teams, and security researchers.
+</p>
 
 ---
 
-=== WARNING ===
-❗ THIS TOOL IS FOR LEGAL ETHICAL HACKING / PENTESTING ONLY
-❗ UNAUTHORIZED USE IS ILLEGAL
-❗ THE AUTHOR IS NOT RESPONSIBLE FOR MISUSE
+## ⚠️ Legal & Ethical Notice
+
+> ❗ **For authorized security testing only**  
+> ❗ Unauthorized use is illegal  
+> ❗ The author is not responsible for misuse  
+
+By using this tool, you agree to test **only systems you own or have explicit permission to assess**.
 
 ---
 
-=== INSTALLATION ===
+## 📖 Overview
 
-1. REQUIREMENTS
+**Victimator-X** is an advanced password profiling tool that generates highly targeted wordlists using personal, professional, and digital footprint data.
 
-   * Python 3.x
-   * Built‑in modules only:
-     • itertools
-     • platform
-     • os
-     • signal
-     • pathlib
-     • argparse
+It simulates realistic human password patterns to improve the effectiveness of:
 
-   ✅ No external pip packages required
+- 🔍 Password strength audits  
+- 🛡️ Security assessments  
+- 🎯 Red team engagements  
+- 🧪 CTF challenges & research  
 
-2. DOWNLOAD
+---
 
-```
+## ✨ Features
+
+### 🔤 Smart Word Generation
+- Leet speak transformations  
+- Name & keyword permutations  
+- Special character injection  
+- Human-like password patterns  
+
+### 🧠 Intelligent Classification
+- Automatic strength scoring  
+- Categorized outputs:
+  - `weak`
+  - `medium`
+  - `strong`
+
+### ⚙️ Tool Optimization Modes
+- `--hashcat` → optimized for Hashcat  
+- `--hydra` → optimized for Hydra  
+
+### 🧩 Flexible Input Support
+- Personal details
+- Hobbies & interests
+- Favorite numbers
+- School/company names
+- Multi-value fields
+
+### 🛡️ Safety & UX
+- Graceful exit handling (CTRL+C)
+- Cross-platform terminal support
+- No external dependencies
+- Legal warning prompt
+
+---
+
+## 📦 Installation
+
+### Requirements
+- Python **3.x**
+- Built-in modules only (no pip required):
+  - `itertools`
+  - `platform`
+  - `os`
+  - `signal`
+  - `pathlib`
+  - `argparse`
+
+### Clone the Repository
+~~~bash
 git clone https://github.com/voltsparx/Victimator-X.git
 cd Victimator-X
-```
+~~~
 
 ---
 
-=== USAGE ===
+## 🚀 Usage
 
 Run the tool:
 
-```
+~~~bash
 python3 victimator-x.py
-```
+~~~
 
-Optional modes:
+### Optional Modes
 
-```
---hashcat    Optimize output for Hashcat usage
---hydra      Optimize output for Hydra usage
+~~~bash
+--hashcat    Optimize output for Hashcat
+--hydra      Optimize output for Hydra
 --min N      Minimum password length
 --max N      Maximum password length
-```
+~~~
 
-Example:
+### Example
 
-```
+~~~bash
 python3 victimator-x.py --hashcat --min 8 --max 16
-```
+~~~
 
 ---
 
-=== INPUT FIELDS (All Optional) ===
+## 🧾 Input Fields
+
+All inputs are optional — more data = more accurate wordlists.
+
+| Category | Examples |
+|----------|----------|
+| Personal | John, Doe, 15071990 |
+| Numbers | 7, 13, 99 |
+| Hobbies | gaming, hiking, music |
+| Digital | reddit.com, xXJohnXx |
+| Education | Central High School |
 
 ---
-_____________________________________________________________________________________
-| INPUT TYPE            | EXAMPLE VALUES                                            |
-|-----------------------------------------------------------------------------------|
-| Personal              | John, Doe, 15071990, 55501234                             |
-| Professional          | AcmeCorp, Manager                                         |
-| Digital               | reddit.com, xXJohnXx                                      |
-| Multi‑value (comma)   | gaming,hiking,blue,green                                  |
--------------------------------------------------------------------------------------
 
----
+## 📂 Output Structure
 
-=== GENERATED OUTPUT ===
+Victimator-X generates categorized wordlists:
 
-Victimator‑X creates:
-
-```
+~~~
 /wordlists/
-  ├── weak.txt
-  ├── medium.txt
-  ├── strong.txt
-  └── full.txt
-```
+├── weak.txt
+├── medium.txt
+├── strong.txt
+└── full.txt
+~~~
 
-Typical output:
-➡ 1,000 – 50,000+ targeted password combinations
-➡ Categorized by strength
-➡ Ready for Hashcat, Hydra, John the Ripper, etc.
-
----
-
-=== FEATURES ===
-
-✓ Leet Speak Transformations
-(e.g., "John" → "J0hn", "J0hN!")
-
-✓ Smart Combinations
-(e.g., "JohnDoe", "John_Doe", "DoeJohn")
-
-✓ Special Character & Number Injection
-(e.g., "John123", "John!")
-
-✓ Password Strength Classification
-(weak / medium / strong)
-
-✓ Hashcat & Hydra Optimized Modes
-
-✓ Length Filtering (--min / --max)
-
-✓ Graceful Exit Handling
-(CTRL+C or type 'exit' anytime)
+### Output Highlights
+- ✔ 1,000 – 50,000+ targeted combinations  
+- ✔ Sorted by length & readability  
+- ✔ Ready for Hashcat, Hydra, John the Ripper  
 
 ---
 
-=== ETHICAL USES ===
+## 🧪 Example Generated Passwords
 
-✔ Password strength auditing
-✔ CTF competitions
-✔ Authorized penetration testing
-✔ Red team exercises
-✔ Security research & education
-
----
-
-=== ILLEGAL USES ===
-
-✖ Attacking systems without permission
-✖ Brute‑forcing unknown targets
-✖ Any activity violating cybercrime laws
+~~~
+John123
+J0hn!
+Doe@1990
+gaming#7
+CentralHigh2024
+~~~
 
 ---
 
-=== SUPPORT ===
+## 🧠 How It Works
 
-Report issues at:
-[https://github.com/voltsparx/Victimator-X/issues](https://github.com/voltsparx/Victimator-X/issues)
+### Workflow
+
+~~~
+Input Data
+   ↓
+Leet Transformations
+   ↓
+Permutations & Combinations
+   ↓
+Special Character Injection
+   ↓
+Length Filtering
+   ↓
+Strength Classification
+   ↓
+Categorized Wordlists
+~~~
 
 ---
 
-=== LICENSE ===
+## 🛠 CLI Options
 
-MIT License — Use responsibly!
-
----
-
-=== CREDITS ===
-
-Created by: voltsparx
-Contact: [voltsparx@gmail.com](mailto:voltsparx@gmail.com)
-GitHub: [https://github.com/voltsparx](https://github.com/voltsparx)
+| Option | Description |
+|--------|------------|
+| `--hashcat` | Ensures compatibility with Hashcat rules |
+| `--hydra` | Limits length for Hydra compatibility |
+| `--min` | Minimum password length |
+| `--max` | Maximum password length |
 
 ---
 
-=== DISCLAIMER ===
+## ✅ Ethical Use Cases
 
-This tool is provided for educational and authorized testing purposes only.
-The author disclaims all responsibility for illegal or unethical use.
-By using this tool, you agree to test only systems you own or have permission for.
+✔ Password strength auditing  
+✔ Authorized penetration testing  
+✔ Red team exercises  
+✔ Security education  
+✔ Capture The Flag competitions  
+
+---
+
+## ❌ Prohibited Uses
+
+✖ Unauthorized system access  
+✖ Brute-forcing unknown targets  
+✖ Violating cybercrime laws  
+
+---
+
+## 📊 Version
+
+**Current Version:** `1.2.0`
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome!
+
+If you'd like to improve Victimator-X:
+
+1. Fork the repo  
+2. Create a feature branch  
+3. Submit a pull request  
+
+---
+
+## 🐞 Reporting Issues
+
+Report bugs or request features here:  
+👉 https://github.com/voltsparx/Victimator-X/issues
+
+---
+
+## 📜 License
+
+MIT License — Use responsibly.
+
+---
+
+## 👤 Author
+
+**voltsparx**  
+📧 voltsparx@gmail.com  
+🌐 https://github.com/voltsparx  
+
+---
+
+## ⭐ Support the Project
+
+If you find Victimator-X useful, consider giving it a ⭐ on GitHub — it helps others discover the tool!
