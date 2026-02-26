@@ -1,0 +1,15 @@
+# Normalize text files across platforms
+* text=auto
+
+# Keep source/docs with LF in repo
+*.py text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+
+# Common binaries
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary

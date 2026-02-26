@@ -209,7 +209,7 @@ Categorized Wordlists
 
 ## 📊 Version
 
-**Current Version:** `1.2.0`
+**Current Version:** `1.4.0`  
 
 ---
 
@@ -222,6 +222,8 @@ If you'd like to improve Victimator-X:
 1. Fork the repo  
 2. Create a feature branch  
 3. Submit a pull request  
+
+Please read [Code of Conduct](CODE_OF_CONDUCT.md) before contributing.
 
 ---
 

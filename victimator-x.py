@@ -4,7 +4,6 @@ import platform
 import os
 import signal
 from pathlib import Path
-import math
 import argparse
 
 # --- Global Config ---
@@ -15,13 +14,11 @@ CYAN = "\033[96m"
 BLUE = "\033[94m"
 RESET = "\033[0m"
 REPO_URL = "https://github.com/voltsparx/Victimator-X"
-VERSION = "1.2.0"
+VERSION = "1.4.0"
 
 # --- Graceful Exit Handler ---
 def handle_quit(signum=None, frame=None):
     print(f"\n{RED}[!] User requested exit. Terminating safely...{RESET}")
-    if 'output_file' in globals() and os.path.exists(output_file):
-        os.remove(output_file)
     exit(0)
 
 signal.signal(signal.SIGINT, handle_quit)
@@ -33,14 +30,14 @@ def clear_terminal():
 # --- Banner ---
 def show_banner():
     clear_terminal()
-    print(f"{ORANGE}  {r'╔═══════════════════════════════════════════════════════════════════╗'}  ")
-    print(f"{ORANGE}  {r'║   __     ___      _   _                 _                __  __   ║'}  ")
-    print(f"{ORANGE}  {r'║   \ \   / (_) ___| |_(_)_ __ ___   __ _| |_ ___  _ __    \ \/ /   ║'}  ")
-    print(f"{ORANGE}  {r'║    \ \ / /| |/ __| __| | '_ ` _ \ / _` | __/ _ \| '__|____\  /    ║'}  ")
-    print(f"{ORANGE}  {r'║     \ V / | | (__| |_| | | | | | | (_| | || (_) | | |_____/  \    ║'}  ")
-    print(f"{ORANGE}  {r'║      \_/  |_|\___|\__|_|_| |_| |_|\__,_|\__\___/|_|      /_/\_\   ║'}  ")
-    print(f"{ORANGE}  {r'║                                                                   ║'}  ")
-    print(f"{ORANGE}  {r'╚═══════════════════════════════════════════════════════════════════╝'}  ")
+    print(f"{ORANGE}  ╔═══════════════════════════════════════════════════════════════════╗  ")
+    print(f"{ORANGE}  ║   __     ___      _   _                 _                __  __   ║  ")
+    print(f"{ORANGE}  ║   \\ \\   / (_) ___| |_(_)_ __ ___   __ _| |_ ___  _ __    \\ \\/ /   ║  ")
+    print(f"{ORANGE}  ║    \\ \\ / /| |/ __| __| | '_ ` _ \\ / _` | __/ _ \\| '__|____\\  /    ║  ")
+    print(f"{ORANGE}  ║     \\ V / | | (__| |_| | | | | | | (_| | || (_) | | |_____/  \\    ║  ")
+    print(f"{ORANGE}  ║      \\_/  |_|\\___|\\__|_|_| |_| |_|\\__,_|\\__\\___/|_|      /_/\\_\\   ║  ")
+    print(f"{ORANGE}  ║                                                                   ║  ")
+    print(f"{ORANGE}  ╚═══════════════════════════════════════════════════════════════════╝  ")
     print(f"{BLUE}     ➤ Author: {ORANGE}voltsparx")
     print(f"{BLUE}     ➤ Repo: {ORANGE}{REPO_URL}")
     print(f"{BLUE}     ➤ Version: {ORANGE}{VERSION}")
