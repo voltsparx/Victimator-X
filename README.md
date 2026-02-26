@@ -1,4 +1,4 @@
-# Victimator-X
+# Victimator-X v1.6.0
 
 Defensive password auditing toolkit for identifying weak password patterns and improving policy quality.
 
@@ -7,9 +7,7 @@ Defensive password auditing toolkit for identifying weak password patterns and i
 Use this tool only on accounts and systems you own or are explicitly authorized to assess.
 Unauthorized access attempts are illegal.
 
-## Version
-
-Current version: `1.6.0`
+---
 
 ## What Changed
 
@@ -28,6 +26,8 @@ Current version: `1.6.0`
   - common weak-password detection
   - personal-info similarity detection
   - passphrase suggestions
+
+---
 
 ## Project Structure
 
@@ -62,12 +62,16 @@ Victimator-X/
 └── README.md
 ```
 
+---
+
 ## Installation
 
 ```bash
 git clone https://github.com/voltsparx/Victimator-X.git
 cd Victimator-X
 ```
+
+---
 
 Requires Python 3.10+.
 
@@ -80,6 +84,8 @@ python victimator-x.py
 ```
 
 The tool will ask for subject details, confirm ethical usage, and generate defensive audit artifacts.
+
+---
 
 ### Non-Interactive
 
@@ -117,12 +123,16 @@ python victimator-x.py \
 
 `passwords.txt` should contain one password per line.
 
+---
+
 ## Engine Modes
 
 - `auto`: chooses engine based on workload
 - `async`: async task orchestration
 - `threading`: thread pool execution
 - `parallel`: process pool execution
+
+---
 
 ## Output Layout
 
@@ -142,6 +152,8 @@ output/
         ├── report.txt
         └── password-audit.json   # only when --password-file is used
 ```
+
+---
 
 ## Key CLI Options
 
@@ -169,11 +181,15 @@ output/
 | `--no-nano-ai` | Disable nano-ai guidance in generated report |
 | `--yes` | Skip interactive ethical confirmation |
 
+---
+
 ## Contributing
 
 1. Fork the repository
 2. Create a feature branch
 3. Open a pull request
+
+---
 
 Read [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) before contributing.
 
