@@ -1,253 +1,186 @@
-# Victimator-X 🔐  
-### Password Profiling & Wordlist Generator
+# Victimator-X
 
-<p align="center">
-  <b>Ethical Security Tool for Targeted Password Auditing</b><br>
-  Built for penetration testers, red teams, and security researchers.<br>
-  For Educational Purposes Only!
-</p>
+Defensive password auditing toolkit for identifying weak password patterns and improving policy quality.
 
----
+## Legal and Ethical Notice
 
-## ⚠️ Legal & Ethical Notice
+Use this tool only on accounts and systems you own or are explicitly authorized to assess.
+Unauthorized access attempts are illegal.
 
-> ❗ **For authorized security testing only**  
-> ❗ Unauthorized use is illegal  
-> ❗ The author is not responsible for misuse  
+## Version
 
-By using this tool, you agree to test **only systems you own or have explicit permission to assess**.
+Current version: `1.6.0`
 
----
+## What Changed
 
-## 📖 Overview
+- Refactored from a single script into a modular `core/` architecture.
+- Added `core/engine/` with `async`, `threading`, and `parallel` execution modes.
+- Added `core/ui/` to centralize all terminal UI logic.
+- Added `core/metadata.py` as a single metadata source used via f-strings.
+- Added structured output in `output/` with logs, wordlists, and reports.
+- Added beginner-friendly prompts and explicit ethical confirmation.
+- Added richer verified subject prompts (organization, role, email/phone hints, MFA, manager use, rotation age, risk notes).
+- Added `--self-check` connectivity checks for engines and output writeability.
+- Added a small nano-ai helper (`--ask-ai`) and run-time remediation guidance.
+- Expanded weak-password analysis with:
+  - policy violations
+  - entropy scoring
+  - common weak-password detection
+  - personal-info similarity detection
+  - passphrase suggestions
 
-**Victimator-X** is an advanced password profiling tool that generates highly targeted wordlists using personal, professional, and digital footprint data.
+## Project Structure
 
-It simulates realistic human password patterns to improve the effectiveness of:
+```text
+Victimator-X/
+├── victimator-x.py
+├── core/
+│   ├── cli.py
+│   ├── audit.py
+│   ├── generator.py
+│   ├── policy.py
+│   ├── reporting.py
+│   ├── logging_setup.py
+│   ├── models.py
+│   ├── metadata.py
+│   ├── nano_ai.py
+│   ├── validation.py
+│   ├── healthcheck.py
+│   ├── utils.py
+│   ├── ui/
+│   │   ├── styles.py
+│   │   └── terminal.py
+│   └── engine/
+│       ├── async_engine.py
+│       ├── threading_engine.py
+│       ├── parallel_engine.py
+│       └── coordinator.py
+├── output/
+│   ├── logs/
+│   ├── wordlists/
+│   └── reports/
+└── README.md
+```
 
-- 🔍 Password strength audits  
-- 🛡️ Security assessments  
-- 🎯 Red team engagements  
-- 🧪 CTF challenges & research  
+## Installation
 
----
-
-## ✨ Features
-
-### 🔤 Smart Word Generation
-- Leet speak transformations  
-- Name & keyword permutations  
-- Special character injection  
-- Human-like password patterns  
-
-### 🧠 Intelligent Classification
-- Automatic strength scoring  
-- Categorized outputs:
-  - `weak`
-  - `medium`
-  - `strong`
-
-### ⚙️ Tool Optimization Modes
-- `--hashcat` → optimized for Hashcat  
-- `--hydra` → optimized for Hydra  
-
-### 🧩 Flexible Input Support
-- Personal details
-- Hobbies & interests
-- Favorite numbers
-- School/company names
-- Multi-value fields
-
-### 🛡️ Safety & UX
-- Graceful exit handling (CTRL+C)
-- Cross-platform terminal support
-- No external dependencies
-- Legal warning prompt
-
----
-
-## 📦 Installation
-
-### Requirements
-- Python **3.x**
-- Built-in modules only (no pip required):
-  - `itertools`
-  - `platform`
-  - `os`
-  - `signal`
-  - `pathlib`
-  - `argparse`
-
-### Clone the Repository
-~~~bash
+```bash
 git clone https://github.com/voltsparx/Victimator-X.git
 cd Victimator-X
-~~~
+```
 
----
+Requires Python 3.10+.
 
-## 🚀 Usage
+## Usage
 
-Run the tool:
+### Interactive (Beginner Friendly)
 
-~~~bash
-python3 victimator-x.py
-~~~
+```bash
+python victimator-x.py
+```
 
-### Optional Modes
+The tool will ask for subject details, confirm ethical usage, and generate defensive audit artifacts.
 
-~~~bash
---hashcat    Optimize output for Hashcat
---hydra      Optimize output for Hydra
---min N      Minimum password length
---max N      Maximum password length
-~~~
+### Non-Interactive
 
-### Example
+```bash
+python victimator-x.py \
+  --subject-name "Alice Carter" \
+  --aliases "alice,acarter,a.carter" \
+  --keywords "gaming,runner,phoenix" \
+  --favorite-numbers "7,13,99" \
+  --birth-year 1999 \
+  --organization "Blue Team" \
+  --role "employee" \
+  --email-hint "alice.carter@example.com" \
+  --phone-hint "+1-555-0199" \
+  --mfa-enabled no \
+  --password-manager no \
+  --last-rotation-days 240 \
+  --risk-notes "reuse,shared-device" \
+  --engine auto \
+  --workers 8 \
+  --max-candidates 30000 \
+  --ask-ai "how to reduce weak passwords?" \
+  --yes
+```
 
-~~~bash
-python3 victimator-x.py --hashcat --min 8 --max 16
-~~~
+### Audit Existing Passwords From File
 
----
+```bash
+python victimator-x.py \
+  --subject-name "Alice Carter" \
+  --password-file passwords.txt \
+  --engine threading \
+  --yes
+```
 
-## 🧾 Input Fields
+`passwords.txt` should contain one password per line.
 
-All inputs are optional — more data = more accurate wordlists.
+## Engine Modes
 
-| Category | Examples |
-|----------|----------|
-| Personal | John, Doe, 15071990 |
-| Numbers | 7, 13, 99 |
-| Hobbies | gaming, hiking, music |
-| Digital | reddit.com, xXJohnXx |
-| Education | Central High School |
+- `auto`: chooses engine based on workload
+- `async`: async task orchestration
+- `threading`: thread pool execution
+- `parallel`: process pool execution
 
----
+## Output Layout
 
-## 📂 Output Structure
+```text
+output/
+├── logs/
+│   └── victimator-x.log
+├── wordlists/
+│   └── <subject-name-slug>/
+│       ├── weak.txt
+│       ├── medium.txt
+│       ├── strong.txt
+│       └── full.txt
+└── reports/
+    └── <subject-name-slug>/
+        ├── summary.json
+        ├── report.txt
+        └── password-audit.json   # only when --password-file is used
+```
 
-Victimator-X generates categorized wordlists:
-
-~~~
-/wordlists/
-├── weak.txt
-├── medium.txt
-├── strong.txt
-└── full.txt
-~~~
-
-### Output Highlights
-- ✔ 1,000 – 50,000+ targeted combinations  
-- ✔ Sorted by length & readability  
-- ✔ Ready for Hashcat, Hydra, John the Ripper  
-
----
-
-## 🧪 Example Generated Passwords
-
-~~~
-John123
-J0hn!
-Doe@1990
-gaming#7
-CentralHigh2024
-~~~
-
----
-
-## 🧠 How It Works
-
-### Workflow
-
-~~~
-Input Data
-   ↓
-Leet Transformations
-   ↓
-Permutations & Combinations
-   ↓
-Special Character Injection
-   ↓
-Length Filtering
-   ↓
-Strength Classification
-   ↓
-Categorized Wordlists
-~~~
-
----
-
-## 🛠 CLI Options
+## Key CLI Options
 
 | Option | Description |
-|--------|------------|
-| `--hashcat` | Ensures compatibility with Hashcat rules |
-| `--hydra` | Limits length for Hydra compatibility |
-| `--min` | Minimum password length |
-| `--max` | Maximum password length |
+|---|---|
+| `--subject-name` | Name used for subject-scoped output folders |
+| `--aliases` | Comma-separated known aliases/usernames |
+| `--keywords` | Comma-separated personal keywords |
+| `--favorite-numbers` | Comma-separated reused numbers |
+| `--birth-year` | Optional year used in weak-pattern checks |
+| `--password-file` | File with passwords to audit |
+| `--organization` / `--role` | Extra profile context for audit attribution |
+| `--email-hint` / `--phone-hint` | Optional hints used for weak-pattern detection |
+| `--mfa-enabled` / `--password-manager` | Security hygiene context (`yes`, `no`, `unknown`) |
+| `--last-rotation-days` | Password age context |
+| `--risk-notes` | Comma-separated contextual risk markers |
+| `--engine` | `auto`, `async`, `threading`, or `parallel` |
+| `--workers` | Worker count |
+| `--min-length` / `--max-length` | Generated candidate length bounds |
+| `--max-candidates` | Candidate generation cap |
+| `--policy-min-length` | Password policy minimum length |
+| `--output-root` | Root output directory (default `output`) |
+| `--self-check` | Run engine/output connectivity checks and exit |
+| `--ask-ai` | Ask nano-ai for quick defensive guidance |
+| `--no-nano-ai` | Disable nano-ai guidance in generated report |
+| `--yes` | Skip interactive ethical confirmation |
 
----
+## Contributing
 
-## ✅ Ethical Use Cases
+1. Fork the repository
+2. Create a feature branch
+3. Open a pull request
 
-✔ Password strength auditing  
-✔ Authorized penetration testing  
-✔ Red team exercises  
-✔ Security education  
-✔ Capture The Flag competitions  
+Read [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) before contributing.
 
----
+## Security
 
-## ❌ Prohibited Uses
+See [SECURITY.md](SECURITY.md).
 
-✖ Unauthorized system access  
-✖ Brute-forcing unknown targets  
-✖ Violating cybercrime laws  
+## License
 
----
-
-## 📊 Version
-
-**Current Version:** `1.4.0`  
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome!
-
-If you'd like to improve Victimator-X:
-
-1. Fork the repo  
-2. Create a feature branch  
-3. Submit a pull request  
-
-Please read [Code of Conduct](CODE_OF_CONDUCT.md) before contributing.
-
----
-
-## 🐞 Reporting Issues
-
-Report bugs or request features here:  
-👉 https://github.com/voltsparx/Victimator-X/issues
-
----
-
-## 📜 License
-
-MIT License — Use responsibly.
-
----
-
-## 👤 Author
-
-**voltsparx**  
-📧 voltsparx@gmail.com  
-🌐 https://github.com/voltsparx  
-
----
-
-## ⭐ Support the Project
-
-If you find Victimator-X useful, consider giving it a ⭐ on GitHub — it helps others discover the tool!
+MIT

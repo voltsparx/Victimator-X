@@ -22,6 +22,7 @@ dist/
 # Runtime/generated output
 wordlists/
 wordlists_test/
+output/
 
 # OS/editor noise
 .DS_Store
